@@ -16,11 +16,11 @@ if($method == 'POST'){
     switch ($action) {
 
         case 'testaction':
-        $fulfillment = "Hi from webhook";
+        $fulfillment = "Hi from webhookV2";
             break;
 
         case 'abc':
-            $fulfillment = "abc";
+            $fulfillment = "action: abc";
             break;
 
         default:
