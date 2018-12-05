@@ -48,6 +48,28 @@ else {
 
 function checkSentiment ($text) {
 
-    return $text;
+    $client = new http\Client;
+    $request = new http\Client\Request;
+
+    $request->setRequestUrl('https://api.aylien.com/api/v1/sentiment');
+    $request->setRequestMethod('GET');
+    $request->setQuery(new http\QueryString(array(
+        'text' => 'Meine Handy-Rechnung ist zu hoch!!',
+        '' => '',
+        'language' => 'de'
+    )));
+
+    $request->setHeaders(array(
+        'x-aylien-textapi-application-id' => '5830e19e',
+        'x-aylien-textapi-application-key' => 'dcb00d991f9cf96640e804ee71681782',
+        'content-type' => 'application/json'
+    ));
+
+    $client->enqueue($request)->send();
+    $response = $client->getResponse();
+
+     $response->getBody();
+
+    return $response.polarity;
 }
 ?>
