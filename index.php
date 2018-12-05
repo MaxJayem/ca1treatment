@@ -31,7 +31,7 @@ if($method == 'POST'){
             break;
 
         case 'problem1':
-            $fulfillment = $text."[ ".checkSentiment($text)." ]";
+            $fulfillment = $text." [Polarität: ".checkSentiment($text)."]";
             break;
 
 
