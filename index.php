@@ -65,9 +65,9 @@ function checkSentiment ($text) {
     ));
 
     try {
-        $response = $request->send();
+        $response1 = $request->send();
 
-        return $response->getBody();
+        return "Hallo";
     } catch (HttpException $ex) {
         return $ex;
     }
