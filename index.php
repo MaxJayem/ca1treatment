@@ -69,7 +69,7 @@ function checkSentiment ($text) {
 
         return "Hallo";
     } catch (HttpException $ex) {
-        return $ex;
+        return "Hallo";
     }
 
 
