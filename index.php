@@ -48,28 +48,30 @@ else {
 
 function checkSentiment ($text) {
 
-    $client = new http\Client;
-    $request = new http\Client\Request;
+    $request = new HttpRequest();
+    $request->setUrl('https://api.aylien.com/api/v1/sentiment');
+    $request->setMethod(HTTP_METH_GET);
 
-    $request->setRequestUrl('https://api.aylien.com/api/v1/sentiment');
-    $request->setRequestMethod('GET');
-    $request->setQuery(new http\QueryString(array(
-        'text' => 'Meine Handy-Rechnung ist zu hoch!!',
-        '' => '',
+    $request->setQueryData(array(
+        'text' => 'Warum%20ist%20mein%20Vertrag%20so%20teuer?',
         'language' => 'de'
-    )));
-
-    $request->setHeaders(array(
-        'x-aylien-textapi-application-id' => '5830e19e',
-        'x-aylien-textapi-application-key' => 'dcb00d991f9cf96640e804ee71681782',
-        'content-type' => 'application/json'
     ));
 
-    $client->enqueue($request)->send();
-    $response = $client->getResponse();
+    $request->setHeaders(array(
+        'Postman-Token' => 'ccbd8a69-3127-4edf-9821-8ec5254682cf',
+        'cache-control' => 'no-cache',
+        'X-AYLIEN-TextAPI-Application-ID' => '5830e19e',
+        'X-AYLIEN-TextAPI-Application-Key' => 'dcb00d991f9cf96640e804ee71681782'
+    ));
 
-     $response->getBody();
+    try {
+        $response = $request->send();
 
-    return $response.polarity;
+        return $response->getBody();
+    } catch (HttpException $ex) {
+        return $ex;
+    }
+
+
 }
 ?>
