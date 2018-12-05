@@ -1,7 +1,7 @@
 <?php
 
 
-
+require_once("vendor/autoload.php");
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -13,11 +13,7 @@ if($method == 'POST'){
     $text = $json->queryResult->queryText;
     $action = $json->queryResult->action;
 
-    $textapi = new AYLIEN\TextAPI("5830e19e", "dcb00d991f9cf96640e804ee71681782");
 
-    $sentiment = $textapi->Sentiment(array(
-        'text' => 'John is a very good football player!'
-    ));
 
     switch ($action) {
 
@@ -54,8 +50,12 @@ else {
 
 function checkSentiment ($text) {
 
+    $textapi = new AYLIEN\TextAPI("5830e19e", "dcb00d991f9cf96640e804ee71681782");
 
+    $sentiment = $textapi->Sentiment(array(
+        'text' => 'John is a very good football player!'
+    ));
 
-    return "Hallo";
+    return $sentiment->polarity;
 }
 ?>
