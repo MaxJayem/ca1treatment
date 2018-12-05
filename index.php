@@ -48,11 +48,11 @@ else {
 
 function checkSentiment ($text) {
 
-   // $textapi = new AYLIEN\TextAPI("5830e19e", "dcb00d991f9cf96640e804ee71681782");
+    $textapi = new AYLIEN\TextAPI("5830e19e", "dcb00d991f9cf96640e804ee71681782");
 
-  //  $sentiment = $textapi->Sentiment(array(
-  //      'text' => 'John is a very good football player!'
-  //  ));
+    $sentiment = $textapi->Sentiment(array(
+        'text' => 'John is a very good football player!'
+    ));
 
     return "Hallo";
 }
