@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit8b14163f9e5b6ab3fb9f0f03f644baed
+class ComposerStaticInit4a07b6a84847c0489df32ab5499fd5a6
 {
     public static $classMap = array (
         'AYLIEN\\TextAPI' => __DIR__ . '/..' . '/aylien/textapi/src/AYLIEN/TextAPI.php',
@@ -15,7 +15,7 @@ class ComposerStaticInit8b14163f9e5b6ab3fb9f0f03f644baed
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit8b14163f9e5b6ab3fb9f0f03f644baed::$classMap;
+            $loader->classMap = ComposerStaticInit4a07b6a84847c0489df32ab5499fd5a6::$classMap;
 
         }, null, ClassLoader::class);
     }
