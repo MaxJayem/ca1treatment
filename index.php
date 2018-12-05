@@ -12,26 +12,39 @@ if($method == 'POST'){
 
     $text = $json->queryResult->queryText;
     $action = $json->queryResult->action;
-
+    //$response = new stdClass();
 
 
     switch ($action) {
 
         case 'testaction':
         $fulfillment = checkSentiment("Funktion funktioniert");
+
+            $response->fulfillmentText = $fulfillment;
             break;
 
 
         case 'abc':
             $fulfillment = "action: abc";
+            $response->fulfillmentText = $fulfillment;
             break;
             
         case 'hi':
             $fulfillment = "Hi wie geht's?";
+            $response->fulfillmentText = $fulfillment;
             break;
 
         case 'problem1':
             $fulfillment = $text." [Polarität: ".checkSentiment($text)."]";
+            $response->fulfillmentText = $fulfillment;
+            break;
+
+        case 'rich':
+            $response = new stdClass([
+                "fulfillmentText" => "Das geht auch"
+            ]);
+
+
             break;
 
 
@@ -41,10 +54,6 @@ if($method == 'POST'){
     }
 
 
-
-
-    $response = new stdClass();
-    $response->fulfillmentText = $fulfillment;
 
     echo json_encode($response);
 
