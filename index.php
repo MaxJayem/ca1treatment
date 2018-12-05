@@ -59,7 +59,7 @@ function checkSentiment ($text) {
     $textapi = new AYLIEN\TextAPI("5830e19e", "dcb00d991f9cf96640e804ee71681782");
 
     $sentiment = $textapi->Sentiment(array(
-        'text' => 'Ich habe doch gar kein Abonnement abgeschlossen!',
+        'text' =>  $text,
         'language' => 'de'
     ));
 
