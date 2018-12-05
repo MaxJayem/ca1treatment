@@ -21,13 +21,19 @@ if($method == 'POST'){
         $fulfillment = checkSentiment("Funktion funktioniert");
             break;
 
+
         case 'abc':
             $fulfillment = "action: abc";
             break;
             
         case 'hi':
-        $fulfillment = "Hi wie geht's?";
-        break;
+            $fulfillment = "Hi wie geht's?";
+            break;
+
+        case 'problem1':
+            $fulfillment = $text."[ ".checkSentiment($text)." ]";
+            break;
+
 
         default:
 
