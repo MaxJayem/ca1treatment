@@ -28,20 +28,15 @@ if ($method == 'POST') {
 
 
 
-    $response = new JsonResponse([                  //Erstelle Json-Objekt "Response", welches die Antwort für den CA enthält
-        "fulfillmentText" => $fulfillment,
-    ]);
-    return $response;
 
+    $response = new \stdClass();
+    $response->fulfillmentText = "Hi from webhook";
 
+    echo json_encode($response);
 
-    //$response = new \stdClass();
-    //$response->fulfillmentText ="Hi from webhook";
-   // $response->source = "webhook";
-    //echo json_encode($response);
 }
 else {
-    echo"method not allowedOK";
+    echo "method not allowedOK";
 
 }
 ?>
