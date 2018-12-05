@@ -48,29 +48,12 @@ else {
 
 function checkSentiment ($text) {
 
-    $request = new HttpRequest();
-    $request->setUrl('https://api.aylien.com/api/v1/sentiment');
-    $request->setMethod(HTTP_METH_GET);
+    $textapi = new AYLIEN\TextAPI("5830e19e", "dcb00d991f9cf96640e804ee71681782");
 
-    $request->setQueryData(array(
-        'text' => 'Warum%20ist%20mein%20Vertrag%20so%20teuer?',
-        'language' => 'de'
-    ));
-
-    $request->setHeaders(array(
-        'X-AYLIEN-TextAPI-Application-ID' => '5830e19e',
-        'X-AYLIEN-TextAPI-Application-Key' => 'dcb00d991f9cf96640e804ee71681782'
+    $sentiment = $textapi->Sentiment(array(
+        'text' => 'John is a very good football player!'
     ));
 
     return "Hallo";
-    //try {
-      //  $response1 = $request->send();
-
-        //return "Hallo";
-    //} catch (HttpException $ex) {
-    //    return "Hallo";
-    //}
-
-
 }
 ?>
