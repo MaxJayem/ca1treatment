@@ -16,7 +16,7 @@ if($method == 'POST'){
     switch ($action) {
 
         case 'testaction':
-        $fulfillment = "Hi from webhookV2";
+        $fulfillment = checkSentiment("Funktion funktioniert");
             break;
 
         case 'abc':
@@ -44,5 +44,10 @@ if($method == 'POST'){
 else {
     echo "method not allowedOK";
 
+}
+
+function checkSentiment ($text) {
+
+    return $text;
 }
 ?>
