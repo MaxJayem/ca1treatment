@@ -1,9 +1,9 @@
 <?php
 
-$method = $_SERVER['REQUEST'];
+$method = $_SERVER['REQUEST_METHOD'];
 
 //Processes only when method is POST
-if ($method == "POST") {
+if ($method == 'POST') {
 
     $requestBody = file_get_contents('php://input');
     $json =  json_decode($requestBody);
@@ -26,8 +26,7 @@ if ($method == "POST") {
             break;
     }
     $response = new \stdClass();
-    $response->fulfillmentText ="Hall0";
-    $response->displayText = "";
+    $response->fulfillmentText ="Hi from webhook";
     $response->source = "webhook";
     echo json_encode($response);
 }
