@@ -1,12 +1,14 @@
 <?php
 
+
+
+
 $method = $_SERVER['REQUEST_METHOD'];
 
-//Processes only when method is POST
-if ($method == 'POST') {
-
+// Process only when method is POST
+if($method == 'POST'){
     $requestBody = file_get_contents('php://input');
-    $json =  json_decode($requestBody);
+    $json = json_decode($requestBody);
 
     $text = $json->queryResult->queryText;
     $action = $json->queryResult->action;
