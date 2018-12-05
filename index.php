@@ -58,19 +58,18 @@ function checkSentiment ($text) {
     ));
 
     $request->setHeaders(array(
-        'Postman-Token' => 'ccbd8a69-3127-4edf-9821-8ec5254682cf',
-        'cache-control' => 'no-cache',
         'X-AYLIEN-TextAPI-Application-ID' => '5830e19e',
         'X-AYLIEN-TextAPI-Application-Key' => 'dcb00d991f9cf96640e804ee71681782'
     ));
 
-    try {
-        $response1 = $request->send();
+    return "Hallo";
+    //try {
+      //  $response1 = $request->send();
 
-        return "Hallo";
-    } catch (HttpException $ex) {
-        return "Hallo";
-    }
+        //return "Hallo";
+    //} catch (HttpException $ex) {
+    //    return "Hallo";
+    //}
 
 
 }
