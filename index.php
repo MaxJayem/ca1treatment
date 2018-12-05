@@ -22,6 +22,10 @@ if($method == 'POST'){
         case 'abc':
             $fulfillment = "action: abc";
             break;
+            
+        case 'hi':
+        $fulfillment = "Hi wie geht's?";
+        break;
 
         default:
 
