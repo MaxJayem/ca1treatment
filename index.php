@@ -32,7 +32,7 @@ if($method == 'POST'){
 
 
     $response = new stdClass();
-    $response->fulfillmentText = "Hi from webhook";
+    $response->fulfillmentText = $fulfillment;
 
     echo json_encode($response);
 
