@@ -68,13 +68,28 @@ if($method == 'POST'){
         case 'problem_4':
 
             if (checkSentiment($text) == "negative") { //empathische Reaktion
-                $fulfillment= "Ok ich sehe das Problem und kann ihren Ärger nachvollziehen. Im System steht, dass das Abo am 22.02. abgeschlossen wurde.";
+                $fulfillment= "Ok, ich sehe das Problem und kann ihren Ärger nachvollziehen. Im System steht, dass das Abo am 22.02. abgeschlossen wurde.";
             }
-            else{
+            else {
 
-                $fulfillment = "Ich schaue gerne nochmal in unserem System nach. Hier steht, das Abonnement wurde am 22.02. abgeschlossen. ";
+                $fulfillment = "Im System steht, dass das Abo am 22.02. abgeschlossen wurde.";
             }
          break;
+
+        case 'problem_5':
+
+            if (checkSentiment($text) == "negative") { //empathische Reaktion
+                $fulfillment= "Ich kann Ihnen leider nicht helfen, und leite Sie nun an einen unserer Servicemitarbeiter weiter.
+                               Dieser kann für sie eine Drittanbietersperre einrichten, damit keine weiteren Zusatzleistungen gebucht werden können. ";
+            }
+            else {
+
+                $fulfillment = "Ich verstehe Ihre Verärgerung, und denke, dass ich Ihnen leider nicht bei Ihrem Problem helfen kann. Ich leite Sie nun an einen unserer Servicemitarbeiter weiter.
+                                Dieser kann für sie eine Drittanbietersperre einrichten,
+                                damit keine weiteren Zusatzleistungen gebucht werden können.";
+        }
+            break;
+
 
 
 
