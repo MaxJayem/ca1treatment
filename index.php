@@ -21,7 +21,7 @@ if($method == 'POST'){
         case 'input.welcome':
 
             $fulfillment = "Herzlich willkommen im Chabot-Support von HandyDiscounter2000. Wobei kann ich Ihnen helfen? ;)";
-
+            $response->fulfillmentText = $fulfillment;
             break;
 
         case 'testaction':
