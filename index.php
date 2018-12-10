@@ -68,7 +68,7 @@ if($method == 'POST'){
         case 'problem_4':
 
             if (checkSentiment($text) == "negative") { //empathische Reaktion
-                $fulfillment= "Ok ich sehe das Problem und kann ihren Ärger nachvollziehen. Hier steht allerdings, dass das Abo am 22.02. abgeschlossen wurde.";
+                $fulfillment= "Ok ich sehe das Problem und kann ihren Ärger nachvollziehen. Im System steht, dass das Abo am 22.02. abgeschlossen wurde.";
             }
             else{
 
