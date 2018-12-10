@@ -21,29 +21,36 @@ if($method == 'POST'){
         case 'input.welcome':
 
             $fulfillment = "Herzlich willkommen im Chabot-Support von HandyDiscounter2000. Wobei kann ich Ihnen helfen? ;)";
-            $response->fulfillmentText = $fulfillment;
-            break;
 
-        case 'testaction':
-        $fulfillment = checkSentiment("Funktion funktioniert");
-
-            $response->fulfillmentText = $fulfillment;
             break;
 
 
-        case 'abc':
-            $fulfillment = "action: abc";
-            $response->fulfillmentText = $fulfillment;
-            break;
-            
-        case 'hi':
-            $fulfillment = "Hi wie geht's?";
-            $response->fulfillmentText = $fulfillment;
+        case 'problem_1':
+
+
+            if (checkSentiment($text) == "negative") { //empathische Reaktion
+
+                $fulfillment = "Verstehe, das würde mich auch ärgern. Ich werfe gerne einen Blick in die aktuelle Rechnung. 
+                                Um eine Rechnung einsehen zu können, benötige ich zunächst Ihre Kundennummer, 
+                                die Rechnungsnummer, sowie ihr Geburtsdatum zur Authentifizierung. Zunächst die 
+                                Kundennummer bitte. 😊Um eine Rechnung einsehen zu können, benötige ich zunächst Ihre Kundennummer, 
+                                die Rechnungsnummer, sowie ihr Geburtsdatum zur Authentifizierung. Zunächst die Kundennummer bitte. 😊";
+            }
+            else {  //Normale Reaktion
+
+                $fulfillment = "Um eine Rechnung einsehen zu können, benötige ich zunächst Ihre Kundennummer, 
+                                die Rechnungsnummer, sowie ihr Geburtsdatum zur Authentifizierung. Zunächst die 
+                                Kundennummer bitte. 😊Um eine Rechnung einsehen zu können, benötige ich zunächst Ihre Kundennummer, 
+                                die Rechnungsnummer, sowie ihr Geburtsdatum zur Authentifizierung. Zunächst die Kundennummer bitte. 😊";
+            }
+
             break;
 
-        case 'problem1':
-            $fulfillment = $text." [Polarität: ".checkSentiment($text)."]";
-            $response->fulfillmentText = $fulfillment;
+
+        case 'problem:_2':
+
+            $fulfillment = "Vielen Dank. Ich habe die Rechnung vor mir, der Rechnungsbetrag für den aktuellen Monat beläuft sich auf 42,99€.";
+
             break;
 
 
@@ -55,12 +62,12 @@ if($method == 'POST'){
     }
 
 
-
+    $response->fulfillmentText = $fulfillment;
     echo json_encode($response);
 
 }
 else {
-    echo "method not allowedOK";
+    echo "method not allowed!";
 
 }
 
