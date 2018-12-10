@@ -47,8 +47,21 @@ if($method == 'POST'){
 
         case 'problem:_2':
 
-            $fulfillment = "Vielen Dank. Ich habe die Rechnung vor mir, der Rechnungsbetrag für den aktuellen Monat beläuft sich auf 42,99€.";
+            $fulfillment = "Vielen Dank. Ich habe die Rechnung vor mir, der Rechnungsbetrag für den aktuellen Monat beläuft sich auf 42,99€.(inkl. MwSt.)";
 
+            break;
+
+
+        case 'problem_3':
+
+            if (checkSentiment($text) == "negative") { //empathische Reaktion
+
+                $fulfillment = "Verstehe, bitte entschuldigen Sie die Verwirrung. Wenn sie möchten, kann ich Ihnen eine genaue Auflistung der Kosten nennen.";
+            }
+            else {//Normale Reaktion
+
+                $fulfillment = "Wenn sie möchten, kann ich Ihnen eine genaue Auflistung der Kosten nennen.";
+            }
             break;
 
 
