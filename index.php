@@ -12,10 +12,17 @@ if($method == 'POST'){
 
     $text = $json->queryResult->queryText;
     $action = $json->queryResult->action;
-    //$response = new stdClass();
+    $response = new stdClass();
 
 
     switch ($action) {
+
+
+        case 'input.welcome':
+
+            $fulfillment = "Herzlich willkommen im Chabot-Support von HandyDiscounter2000. Wobei kann ich Ihnen helfen? ;)";
+
+            break;
 
         case 'testaction':
         $fulfillment = checkSentiment("Funktion funktioniert");
@@ -39,13 +46,7 @@ if($method == 'POST'){
             $response->fulfillmentText = $fulfillment;
             break;
 
-        case 'rich':
-            $response = new stdClass([
-                "fulfillmentText" => "Das geht auch"
-            ]);
 
-
-            break;
 
 
         default:
