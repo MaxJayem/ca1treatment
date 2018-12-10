@@ -65,6 +65,18 @@ if($method == 'POST'){
             break;
 
 
+        case 'problem_4':
+
+            if (checkSentiment($text) == "negative") { //empathische Reaktion
+                $fulfillment= "Ok ich sehe das Problem und kann ihren Ärger nachvollziehen. Hier steht allerdings, dass das Abo am 22.02. abgeschlossen wurde.";
+            }
+            else{
+
+                $fulfillment = "Ich schaue gerne nochmal in unserem System nach. Hier steht, das Abonnement wurde am 22.02. abgeschlossen. ";
+            }
+         break;
+
+
 
 
         default:
