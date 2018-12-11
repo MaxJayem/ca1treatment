@@ -20,7 +20,7 @@ if($method == 'POST'){
 
         case 'input.welcome':
 
-            $fulfillment = "Herzlich willkommen im Chabot-Support von HandyDiscounter2000. Wobei kann ich Ihnen helfen? ;)";
+            $fulfillment = "Herzlich willkommen im Chatbot-Support von HandyDiscounter2000. Wobei kann ich Ihnen helfen? ;)";
 
             break;
 
@@ -45,7 +45,7 @@ if($method == 'POST'){
             break;
 
 
-        case 'problem:_2':
+        case 'problem_2':
 
             $fulfillment = "Vielen Dank. Ich habe die Rechnung vor mir, der Rechnungsbetrag für den aktuellen Monat beläuft sich auf 42,99€.(inkl. MwSt.)";
 
