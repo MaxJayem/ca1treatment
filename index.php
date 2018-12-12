@@ -84,7 +84,7 @@ if($method == 'POST'){
             }
             else {
 
-                $fulfillment = "Ich verstehe Ihre Verärgerung, und denke, dass ich Ihnen leider nicht bei Ihrem Anliegen helfen kann. Ich leite Sie nun an einen unserer Servicemitarbeiter weiter.
+                $fulfillment = "Ich kann Ihre Verärgerung sehr gut nachvollziehen, und denke, dass ich Ihnen leider nicht bei Ihrem Anliegen helfen kann. Ich leite Sie nun an einen unserer Servicemitarbeiter weiter.
                                 Dieser kann für sie eine Drittanbietersperre einrichten,
                                 damit keine weiteren Zusatzleistungen gebucht werden können.";
         }
