@@ -91,21 +91,6 @@ if($method == 'POST'){
         }
             break;
 
-        case 'test1':
-
-            $messages = '
-            [
-                "text" => [
-                    "text" => "Erste Antwort"
-                ]
-                
-            ]';
-
-
-            break;
-
-
-
 
 
         default:
@@ -116,7 +101,7 @@ if($method == 'POST'){
 
     $response->fulfillmentText = $fulfillment;
 
-    $respone->fulfillmentMessages = $messages;
+
 
     echo json_encode($response);
 
