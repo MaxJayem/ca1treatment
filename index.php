@@ -5,7 +5,8 @@ require_once("vendor/autoload.php");
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-// Process only when method is POST
+// Überprüfung, ob es sich om 'POST'-Methode handelt
+
 if($method == 'POST'){
     $requestBody = file_get_contents('php://input');
     $json = json_decode($requestBody);
@@ -90,6 +91,19 @@ if($method == 'POST'){
         }
             break;
 
+        case 'test1':
+
+            $messages = '
+            [
+                "text" => [
+                    "text" => "Erste Antwort"
+                ]
+                
+            ]';
+
+
+            break;
+
 
 
 
@@ -101,6 +115,9 @@ if($method == 'POST'){
 
 
     $response->fulfillmentText = $fulfillment;
+
+    $respone->fulfillmentMessages = $messages;
+
     echo json_encode($response);
 
 }
