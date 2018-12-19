@@ -36,7 +36,7 @@ if($method == 'POST'){
             }
             else {  //Normale Reaktion
 
-                $fulfillment = "Um eine Rechnung einsehen zu können, benötige ich zunächst Ihre Kundennummer, die Rechnungsnummer, sowie ihr Geburtsdatum zur Authentifizierung. Zunächst die Kundennummer bitte. 😊";
+                $fulfillment = "Um eine Rechnung einsehen zu können, benötige ich zunächst Ihre Kundennummer, die Rechnungsnummer, sowie ihr Geburstjahr zur Authentifizierung. Zunächst die Kundennummer bitte. 😊";
 
 
             }
