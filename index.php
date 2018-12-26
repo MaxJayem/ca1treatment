@@ -21,7 +21,7 @@ if($method == 'POST'){
 
         case 'input.welcome':
 
-            $fulfillment = "Herzlich willkommen im Chatbot-Support von Handytarife2000. Wobei kann ich Ihnen helfen? ;)";
+            $fulfillment = "Herzlich willkommen im Chatbot-Support von Handytarife2000. Wobei kann ich Ihnen helfen? 😊";
 
             break;
 
