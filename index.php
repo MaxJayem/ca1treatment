@@ -28,6 +28,7 @@ if($method == 'POST'){
 
         case 'problem_1':
 
+            //problembeschreibung_problem_1
 
             if (checkSentiment($text) == "negative") { //empathische Reaktion
 
@@ -37,21 +38,16 @@ if($method == 'POST'){
             else {  //Normale Reaktion
 
                 $fulfillment = "Um eine Rechnung einsehen zu können, benötige ich zunächst Ihre Kundennummer, die Rechnungsnummer, sowie ihr Geburstjahr zur Authentifizierung. Zunächst die Kundennummer bitte. 😊";
-
-
             }
 
             break;
 
 
-        case 'problem_2':
-
-            $fulfillment = "Vielen Dank. Ich habe die Rechnung vor mir, der Rechnungsbetrag für den aktuellen Monat beläuft sich auf 42,99€.(inkl. MwSt.)";
-
-            break;
 
 
         case 'problem_3':
+
+            //Kostenauflistung?_problem_3
 
             if (checkSentiment($text) == "negative") { //empathische Reaktion
 
@@ -66,12 +62,15 @@ if($method == 'POST'){
 
         case 'problem_4':
 
+
+            //Spiele-Abo Details_problem_4
+
             if (checkSentiment($text) == "negative") { //empathische Reaktion
-                $fulfillment= "Ok, ich sehe das Problem und kann ihren Ärger gut nachvollziehen. Im System steht, dass das Abo am 22.02. abgeschlossen wurde.";
+                $fulfillment= "Ok, ich sehe das Problem und kann ihren Ärger gut nachvollziehen. Im System steht, dass das Abonnement am 22.12.2018 abgeschlossen wurde.";
             }
             else {
 
-                $fulfillment = "Im System steht, dass das Abo am 22.02. abgeschlossen wurde.";
+                $fulfillment = "Im System steht, dass das Abonnement am 22.12.2018 abgeschlossen wurde.";
             }
          break;
 
