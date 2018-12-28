@@ -21,7 +21,7 @@ if($method == 'POST'){
 
         case 'input.welcome':
 
-            $fulfillment = "Herzlich willkommen im Chatbot-Support von Handytarife2000. Wobei kann ich Ihnen helfen? 😊";
+            $fulfillment = "Hallo! Mein Name ist Sarah und ich bin Teil des Kundensupport-Teams von Handytarife2000. Auch wenn ich kein Mensch bin, möchte ich Sie bestmöglich unterstützen. 😊";
 
             break;
 
@@ -32,12 +32,12 @@ if($method == 'POST'){
 
             if (checkSentiment($text) == "negative") { //empathische Reaktion
 
-                $fulfillment = "Verstehe, das würde mich auch ärgern. Ich werfe gerne einen Blick in die aktuelle Rechnung. Um eine Rechnung einsehen zu können, benötige ich zunächst Ihre Kundennummer, die Rechnungsnummer, sowie ihr Geburstjahr zur Authentifizierung. Zunächst die Kundennummer bitte. 😊";
+                $fulfillment = "Verstehe, das würde mich auch ärgern. Ich werfe gerne einen Blick in die aktuelle Rechnung. Um eine Rechnung einsehen zu können, benötige ich zunächst Ihre Kundennummer, die Rechnungsnummer, sowie ihr Geburstjahr zur Authentifizierung. Bitte teilen Sie mir zunächst Ihre Kundennummer mit. 😊";
 
             }
             else {  //Normale Reaktion
 
-                $fulfillment = "Um eine Rechnung einsehen zu können, benötige ich zunächst Ihre Kundennummer, die Rechnungsnummer, sowie ihr Geburstjahr zur Authentifizierung. Zunächst die Kundennummer bitte. 😊";
+                $fulfillment = "Um eine Rechnung einsehen zu können, benötige ich zunächst Ihre Kundennummer, die Rechnungsnummer, sowie ihr Geburstjahr zur Authentifizierung. Bitte teilen Sie mir zunächst Ihre Kundennummer mit. 😊";
             }
 
             break;
