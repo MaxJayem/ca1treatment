@@ -21,7 +21,7 @@ if($method == 'POST'){
 
         case 'input.welcome':
 
-            $fulfillment = "Hallo! Mein Name ist Sarah und ich bin Teil des Kundensupport-Teams von Handytarife2000. Auch wenn ich kein Mensch bin, möchte ich Sie bestmöglich unterstützen. 😊";
+            $fulfillment = "Hallo! Mein Name ist Sarah und ich bin Teil des Kundensupport-Teams von Handytarife2000. Auch wenn ich kein Mensch bin, möchte ich Sie bestmöglich unterstützen. 😊 Wobei kann ich Ihnen helfen?";
 
             break;
 
