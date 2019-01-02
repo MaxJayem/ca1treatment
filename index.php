@@ -125,7 +125,7 @@ else {
         . "password=8190d40158952a0b212121997e2b4dc15d39ebabff5de45d9ddecd59016e15f1";
 
     $pdo = new PDO($dsn);
-
+    //Lösung
     $result = $pdo->prepare("SELECT probanden_id FROM empathie WHERE probanden_id =?");
     $result->execute(["testdatensatz"]);
     $user = $result->fetch();
@@ -159,17 +159,81 @@ function updateDB ($session_id, $KP, $empathic) {
 
     $pdo = new PDO($dsn);
 
-    $query = "SELECT probanden_id "
-        . "FROM empathie WHERE probanden_id =testdatensatz"; // .$session_id;
+    $result = $pdo->prepare("SELECT probanden_id FROM empathie WHERE probanden_id =?");
+    $result->execute([$session_id]);
+    $user = $result->fetch();
 
-    $result = $pdo->query($query);
-    $checkID = $result->fetch();
+    $result->closeCursor();
+
+    //Schritt 2 Datensatz erstellen/updaten
+
+    if ($session_id == §user[0]) {//DB-Eintrag vorhanden
+
+        $pdo2 = new PDO($dsn);
+
+        switch($KP){
+            case "1":
+
+                $result2 = $pdo2->prepare("UPDATE empathie SET kp1 =? WHERE probanden_id=?");
+
+
+                break;
+
+            case "2":
+
+                $result2 = $pdo2->prepare("UPDATE empathie SET kp2 =? WHERE probanden_id=?");
+                break;
+
+
+
+            case "3":
+
+                $result2 = $pdo2->prepare("UPDATE empathie SET kp3 =? WHERE probanden_id=?");
+
+                break;
+        }
+
+
+        $result2->execute([$empathic, $session_id]);
+        $result2->closeCursor();
+    }
+    else {  //Eintrag nicht vorhanden
+
+        //Neuen Datensatz schreiben
+
+        $pdo3 = new PDO($dsn);
+
+        switch($KP){
+            case "1":
+
+                $result2 = $pdo3->prepare("INSERT INTO empathie VALUES (?,?,0,0)");
+
+
+                break;
+
+            case "2":
+
+                $result2 = $pdo3->prepare("INSERT INTO empathie (kp2) VALUES (?,0,?,0)");
+                break;
+
+
+
+            case "3":
+
+                $result2 = $pdo3->prepare("INSERT INTO empathie (kp3) VALUES (?,0,0,?");
+
+                break;
+        }
+        $result3 = $pdo3->execute($session_id, $empathic);
+        $result3->closeCursor();
+    }
 
 
 
 
 
-    return $checkID;
+
+
 
 }
 
