@@ -130,10 +130,9 @@ else {
     $result->execute(["testdatensatz"]);
     $user = $result->fetch();
 
-    echo var_dump($user);
-    echo "<br>";
+
     echo $user[0];
-    echo $user[1];
+
 
 
 
