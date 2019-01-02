@@ -92,7 +92,7 @@ if($method == 'POST'){
 
 }
 else {
-    echo "method not allowed!";
+   echo "Ergebnis:";
 
 
 
