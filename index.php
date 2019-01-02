@@ -178,6 +178,8 @@ function createDB ($session_id) {
     $date = date("D M d, Y G:i");
     $result2->execute(["testdatum", 0,0,0,"$date"]);
 
+    //Funktioniert
+
 }
 
 
@@ -201,11 +203,11 @@ function updateDB ($session_id, $KP, $empathic) {
     $result->execute([$session_id]);
     $user = $result->fetch();
 
-    $result->closeCursor();
+
 
     //Schritt 2 Datensatz erstellen/updaten
 
-    if ($session_id == §user[0]) {//DB-Eintrag vorhanden
+    if ($session_id == $user[0]) {//DB-Eintrag vorhanden
 
         $pdo2 = new PDO($dsn);
 
