@@ -151,8 +151,8 @@ function makeDB($session_id) {
         . "password=8190d40158952a0b212121997e2b4dc15d39ebabff5de45d9ddecd59016e15f1";
 
     $pdo2 = new PDO($dsn);
-    $result2 = $pdo2->prepare("UPDATE empathie SET kp1 =? WHERE probanden_id=?");
-    $result2->execute([1, $session_id]);
+    $result2 = $pdo2->prepare("INSERT INTO empathie  VALUES (?,0,0,?,?)");
+    $result2->execute([$session_id, 1, "asd"]);
     $result2->closeCursor();
 }
 
@@ -228,14 +228,14 @@ function updateDB ($session_id, $KP, $empathic) {
 
             case "2":
 
-                $result2 = $pdo3->prepare("INSERT INTO empathie (kp2) VALUES (?,0,?,0)");
+                $result2 = $pdo3->prepare("INSERT INTO empathie VALUES (?,0,?,0)");
                 break;
 
 
 
             case "3":
 
-                $result2 = $pdo3->prepare("INSERT INTO empathie (kp3) VALUES (?,0,0,?");
+                $result2 = $pdo3->prepare("INSERT INTO empathie  VALUES (?,0,0,?");
 
                 break;
         }
