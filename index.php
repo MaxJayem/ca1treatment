@@ -92,7 +92,7 @@ if($method == 'POST'){
          break;
 
         case 'test':
-            createDB($session_id);
+            createDB1($session_id);
             $fulfillment = "Grüße vom fulfillment2";
             break;
 
@@ -176,6 +176,25 @@ function createDB ($session_id) {
     $result2->execute([$session_id, 0,0,0,"zeit"]);
 
 }
+
+
+function createDB1 ($session_id) {
+
+    $dsn = "pgsql:"
+        . "host=ec2-46-137-99-175.eu-west-1.compute.amazonaws.com;"
+        . "dbname=de702gpabga2b8;"
+        . "user=tyejvoeteqjsrj;"
+        . "port=5432;"
+        . "sslmode=require;"
+        . "password=8190d40158952a0b212121997e2b4dc15d39ebabff5de45d9ddecd59016e15f1";
+
+    $pdo2 = new PDO($dsn);
+    $result2 = $pdo2->prepare("INSERT INTO empathie(probanden_id, kp3) VALUES (?,?)");
+    $result2->execute(["test", 0]);
+
+}
+
+
 
 function updateDB ($session_id, $KP, $empathic) {
     //session_id wird als probanden_id übernommen
