@@ -124,12 +124,12 @@ else {
         . "sslmode=require;"
         . "password=8190d40158952a0b212121997e2b4dc15d39ebabff5de45d9ddecd59016e15f1";
 
-    $db = new PDO($dsn);
+    $pdo = new PDO($dsn);
 
-    $query = "SELECT probanden_id "
-        . "FROM empathie WHERE probanden_id = testdatensatz";
+    $result = $pdo->prepare("SELECT probanden_id FROM empathie WHERE probanden_id =?");
+    $result->execute(["testdatensatz"]);
+    $user = $stmt->fetch();
 
-    $result = $db->query($query);
 
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
