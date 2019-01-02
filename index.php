@@ -231,6 +231,10 @@ function updateDB ($session_id, $KP, $empathic) {
                 $result2 = $pdo2->prepare("UPDATE empathie SET kp3 =? WHERE probanden_id=?");
 
                 break;
+
+            default:
+
+                break;
         }
 
 
@@ -245,11 +249,11 @@ function updateDB ($session_id, $KP, $empathic) {
 
         $pdo3 = new PDO($dsn);
         $date = date("D M d, Y G:i");
+        $result2 = $pdo3->prepare("INSERT INTO empathie VALUES (?,?,?,?,?)");
 
         switch($KP){
             case "1":
 
-                $result2 = $pdo3->prepare("INSERT INTO empathie VALUES (?,?,?,?,?)");
 
                 $result2 = $pdo3->execute($session_id, $empathic,0,0,$date);
 
@@ -257,18 +261,19 @@ function updateDB ($session_id, $KP, $empathic) {
 
             case "2":
 
-                $result2 = $pdo3->prepare("INSERT INTO empathie VALUES (?,?,?,?,?)");
 
                 $result2 = $pdo3->execute($session_id,0, $empathic,0,$date);
                 break;
 
 
-
             case "3":
 
-                $result2 = $pdo3->prepare("INSERT INTO empathie VALUES (?,?,?,?,?)");
 
                 $result2 = $pdo3->execute($session_id, 0,0,$empathic,$date);
+
+                break;
+
+            default:
 
                 break;
         }
