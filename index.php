@@ -163,14 +163,11 @@ function updateDB ($session_id, $KP, $empathic) {
         . "FROM empathie WHERE probanden_id =testdatensatz"; // .$session_id;
 
     $result = $pdo->query($query);
+    $checkID = $result->fetch();
 
 
-    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
-        $checkID =$row["probanden_id"];
-    }
 
-    $result->closeCursor();
 
     return $checkID;
 
