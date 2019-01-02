@@ -155,8 +155,8 @@ function makeDB($session_id) {
 
     //$result2->execute([$session_id, 1, "asd"]);
 
-    $result2 = $pdo2->prepare("UPDATE empathie SET kp2 =? WHERE probanden_id=?");
-    $result2->execute([0, "testdatensatz"]);
+    $result2 = $pdo2->prepare("UPDATE empathie SET kp2 =? WHERE probanden_id =?");
+    $result2->execute([1, "testdatensatz"]);
 }
 
 function updateDB ($session_id, $KP, $empathic) {
