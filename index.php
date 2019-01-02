@@ -128,13 +128,11 @@ else {
 
     $result = $pdo->prepare("SELECT probanden_id FROM empathie WHERE probanden_id =?");
     $result->execute(["testdatensatz"]);
-    $user = $stmt->fetch();
+    $user = $result->fetch();
+
+    echo var_dump($user);
 
 
-        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-
-            echo "<p>" . $row["probanden_id"] . "</p>";
-        }
 
     $result->closeCursor();
 
