@@ -92,8 +92,8 @@ if($method == 'POST'){
          break;
 
         case 'test':
-            createDB($session_id);
-            $fulfillment = "Grüße vom fulfillment2";
+
+            $fulfillment = checkSentiment($text);
             break;
 
 
@@ -185,12 +185,6 @@ function createDB ($session_id) {
 
 
 function updateDB ($session_id, $KP, $empathic) {
-    //session_id wird als probanden_id übernommen
-    //KP gibt an, an welchem Konversationspunkt man ist [1,2,3]
-    //empathic ist boolean (1= empathische Antwort, 0 = normale Antwort)
-
-
-    //Schitt 1: Überprüfen, ob Datensatz schon vorhanden
 
     $dsn = "pgsql:"
         . "host=ec2-46-137-99-175.eu-west-1.compute.amazonaws.com;"
@@ -300,4 +294,6 @@ function checkSentiment ($text) {
 
     return $sentiment->polarity;
 }
+
+
 ?>
