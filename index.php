@@ -238,37 +238,46 @@ function updateDB ($session_id, $KP, $empathic) {
 
 
         $result2->execute([$empathic, $session_id]);
-        $result2->closeCursor();
+
+
+
     }
     else {  //Eintrag nicht vorhanden
 
         //Neuen Datensatz schreiben
 
         $pdo3 = new PDO($dsn);
+        $date = date("D M d, Y G:i");
 
         switch($KP){
             case "1":
 
-                $result2 = $pdo3->prepare("INSERT INTO empathie VALUES (?,?,0,0)");
+                $result2 = $pdo3->prepare("INSERT INTO empathie VALUES (?,?,?,?,?)");
 
+                $result2 = $pdo3->execute($session_id, $empathic,0,0,$date);
 
                 break;
 
             case "2":
 
-                $result2 = $pdo3->prepare("INSERT INTO empathie VALUES (?,0,?,0)");
+                $result2 = $pdo3->prepare("INSERT INTO empathie VALUES (?,?,?,?,?)");
+
+                $result2 = $pdo3->execute($session_id,0, $empathic,0,$date);
                 break;
 
 
 
             case "3":
 
-                $result2 = $pdo3->prepare("INSERT INTO empathie  VALUES (?,0,0,?");
+                $result2 = $pdo3->prepare("INSERT INTO empathie VALUES (?,?,?,?,?)");
+
+                $result2 = $pdo3->execute($session_id, 0,0,$empathic,$date);
 
                 break;
         }
-        $result3 = $pdo3->execute($session_id, $empathic);
-        $result3->closeCursor();
+
+
+
     }
 
 
