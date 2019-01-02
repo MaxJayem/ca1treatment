@@ -112,7 +112,8 @@ else {
     $result = $db->query($query);
 
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            echo $row["probanden_id"];
+
+            echo "<p>" . $row["probanden_id"] . "</p>";
         }
 
     $result->closeCursor();
