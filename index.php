@@ -127,7 +127,7 @@ else {
     $db = new PDO($dsn);
 
     $query = "SELECT probanden_id "
-        . "FROM empathie";
+        . "FROM empathie WHERE probanden_id = testdatensatz";
 
     $result = $db->query($query);
 
