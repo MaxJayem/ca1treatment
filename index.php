@@ -106,7 +106,7 @@ else {
 
     $db = new PDO($dsn);
 
-    $query = "SELECT probanden_id"
+    $query = "SELECT probanden_id "
         . "FROM empathie";
 
     $result = $db->query($query);
