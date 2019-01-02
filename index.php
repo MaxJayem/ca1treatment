@@ -97,7 +97,7 @@ else {
 
 
     $dsn = "pgsql:"
-        . "ec2-46-137-99-175.eu-west-1.compute.amazonaws.com;"
+        . "host=ec2-46-137-99-175.eu-west-1.compute.amazonaws.com;"
         . "dbname=de702gpabga2b8;"
         . "user=tyejvoeteqjsrj;"
         . "port=5432;"
