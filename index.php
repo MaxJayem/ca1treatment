@@ -78,7 +78,7 @@ if($method == 'POST'){
          break;
 
         case 'test':
-            $session =  $json->queryResult->outputContexts->name;
+            $session =  $json->session;
             $fulfillment = $session;
             break;
 
