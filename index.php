@@ -45,12 +45,12 @@ if($method == 'POST'){
             if (checkSentiment($text) == "negative") { //empathische Reaktion
 
                 $fulfillment = "Verstehe, das würde mich auch ärgern. Ich werfe gerne einen Blick in die aktuelle Rechnung. Um eine Rechnung einsehen zu können, benötige ich zunächst Ihre Kundennummer, die Rechnungsnummer, sowie ihr Geburstjahr zur Authentifizierung. Bitte teilen Sie mir zunächst Ihre Kundennummer mit. 😊";
-                updateDB($session, 1, 1);
+                updateDB($session_id, 1, 1);
             }
             else {  //Normale Reaktion
 
                 $fulfillment = "Um eine Rechnung einsehen zu können, benötige ich zunächst Ihre Kundennummer, die Rechnungsnummer, sowie ihr Geburstjahr zur Authentifizierung. Bitte teilen Sie mir zunächst Ihre Kundennummer mit. 😊";
-                updateDB($session, 1, 0);
+                updateDB($session_id, 1, 0);
             }
 
             break;
@@ -65,12 +65,12 @@ if($method == 'POST'){
             if (checkSentiment($text) == "negative") { //empathische Reaktion
 
                 $fulfillment = "Verstehe, bitte entschuldigen Sie die Verwirrung. Wenn sie möchten, kann ich Ihnen eine genaue Auflistung der Kosten in diesem Monat nennen.";
-                updateDB($session, 2, 1);
+                updateDB($session_id, 2, 1);
             }
             else {//Normale Reaktion
 
                 $fulfillment = "Wenn sie möchten, kann ich Ihnen eine genaue Auflistung der Kosten in diesem Monat nennen.";
-                updateDB($session, 2, 0);
+                updateDB($session_id, 2, 0);
             }
             break;
 
@@ -82,19 +82,18 @@ if($method == 'POST'){
 
             if (checkSentiment($text) == "negative") { //empathische Reaktion
                 $fulfillment= "Ok, ich sehe das Problem und kann ihren Ärger gut nachvollziehen. Im System steht, dass das Abonnement am 22.12.2018 abgeschlossen wurde.";
-                updateDB($session, 3, 1);
+                updateDB($session_id, 3, 1);
             }
             else {
 
                 $fulfillment = "Im System steht, dass das Abonnement am 22.12.2018 abgeschlossen wurde.";
-                updateDB($session, 3, 0);
+                updateDB($session_id, 3, 0);
             }
          break;
 
         case 'test':
-            $session =  $json->session;
-            $session_id = substr($session, 37);
-            $fulfillment = updateDB($session, 3, 0);
+            makeDB($session_id);
+            $fulfillment = "Grüße vom fulfillment";
             break;
 
 
