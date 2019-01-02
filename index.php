@@ -79,7 +79,8 @@ if($method == 'POST'){
 
         case 'test':
             $session =  $json->session;
-            $fulfillment = $session;
+            $session_id = substr(session, 37);
+            $fulfillment = $session_id;
             break;
 
 
