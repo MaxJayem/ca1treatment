@@ -93,6 +93,7 @@ if($method == 'POST'){
 
         case 'test':
 
+            updateDB($session_id, 1, 1);
             $fulfillment = checkSentiment($text);
             break;
 
