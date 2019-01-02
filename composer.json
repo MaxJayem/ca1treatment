@@ -1,5 +1,6 @@
 {
     "require": {
-        "aylien/textapi": "^0.8.0"
+        "aylien/textapi": "^0.8.0",
+        "csanquer/pdo-service-provider": "~1.1dev"
     }
 }
