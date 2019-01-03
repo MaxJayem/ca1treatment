@@ -93,7 +93,7 @@ if($method == 'POST'){
 
         case 'test':
 
-            updateDB($session_id, 1, 1);
+            createDB($session_id);
             $fulfillment = checkSentiment($text);
             break;
 
@@ -176,7 +176,7 @@ function createDB ($session_id) {
     $result2 = $pdo2->prepare("INSERT INTO empathie VALUES (?,?,?,?,?)");
 
     $date = date("D M d, Y G:i");
-    $result2->execute(["testdatum", 0,0,0,"$date"]);
+    $result2->execute([$session_id, 0,1,0,"$date"]);
 
     //Funktioniert
 
