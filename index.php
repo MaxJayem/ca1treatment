@@ -251,25 +251,29 @@ function updateDB ($session_id, $KP, $empathic) {
         $date = date("D M d, Y G:i");
         $result2 = $pdo3->prepare("INSERT INTO empathie VALUES (?,?,?,?,?)");
 
+
+
         switch($KP){
             case "1":
 
 
-                $result2 = $pdo3->execute($session_id, $empathic,0,0,$date);
+                $result2->execute([$session_id, $empathic,0,0,$date]); //Problemzeile
+
+
 
                 break;
 
             case "2":
 
 
-                $result2 = $pdo3->execute($session_id,0, $empathic,0,$date);
+                $result2->execute([$session_id,0, $empathic,0,$date]);
                 break;
 
 
             case "3":
 
 
-                $result2 = $pdo3->execute($session_id, 0,0,$empathic,$date);
+                $result2->execute([$session_id, 0,0,$empathic,$date]);
 
                 break;
 
