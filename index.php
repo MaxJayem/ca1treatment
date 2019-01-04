@@ -198,7 +198,7 @@ function updateDB ($KP, $empathic) {
     //Datum/Zeit bestimmen
     $date = date("D M d, Y G:i");
 
-    $tracking_id = $currentMax++;
+    $tracking_id = $currentMax[0]++;
 
     //Schritt 2 Datensatz erstellen/updaten
 
