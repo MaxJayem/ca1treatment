@@ -196,18 +196,20 @@ function updateDB ($KP, $empathic) {
     $result = $pdo->prepare("SELECT MAX(tracking_id) FROM tracking");
     $result->execute();
     $currentMax = $result->fetch();
+    $cast = intval($currentMax[0]);
+    $cast++;
 
     //Datum/Zeit bestimmen
     $date = date("D M d, Y G:i");
 
-    $tracking_id = $currentMax[0]++;
+
 
     //Schritt 2 Datensatz erstellen/updaten
 
 
         $pdo2 = new PDO($dsn);
         $result2 = $pdo2->prepare("INSERT INTO tracking VALUES (?,?,?,?)");
-        $result2->execute([$tracking_id, $KP, $empathic, $date]);
+        $result2->execute([$cast, $KP, $empathic, $date]);
 
 
 }
