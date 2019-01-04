@@ -104,7 +104,7 @@ if($method == 'POST'){
             $result = $pdo->prepare("SELECT MAX(tracking_id) FROM tracking");
             $result->execute();
             $currentMax = $result->fetch();
-            $fulfillment = $currentMax[0];
+            $fulfillment = $currentMax[0]++;
 
 
             break;
