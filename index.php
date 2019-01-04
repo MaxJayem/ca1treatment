@@ -89,6 +89,22 @@ if($method == 'POST'){
 
         case 'test':
 
+            $dsn = "pgsql:"
+                . "host=ec2-46-137-99-175.eu-west-1.compute.amazonaws.com;"
+                . "dbname=de702gpabga2b8;"
+                . "user=tyejvoeteqjsrj;"
+                . "port=5432;"
+                . "sslmode=require;"
+                . "password=8190d40158952a0b212121997e2b4dc15d39ebabff5de45d9ddecd59016e15f1";
+
+            $pdo = new PDO($dsn);
+
+
+
+            $result = $pdo->prepare("SELECT MAX(tracking_id) FROM tracking");
+            $result->execute();
+            $currentMax = $result->fetch();
+            $fulfillment = $currentMax;
 
 
             break;
