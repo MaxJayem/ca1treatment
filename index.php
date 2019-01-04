@@ -15,10 +15,6 @@ if($method == 'POST'){
     $action = $json->queryResult->action;
 
 
-    //Session bestimmen
-    $session =  $json->session;
-    $session_id = substr($session, 37);
-
 
     $response = new stdClass();
 
@@ -45,12 +41,12 @@ if($method == 'POST'){
             if (checkSentiment($text) == "negative") { //empathische Reaktion
 
                 $fulfillment = "Verstehe, das würde mich auch ärgern. Ich werfe gerne einen Blick in die aktuelle Rechnung. Um eine Rechnung einsehen zu können, benötige ich zunächst Ihre Kundennummer, die Rechnungsnummer, sowie ihr Geburstjahr zur Authentifizierung. Bitte teilen Sie mir zunächst Ihre Kundennummer mit. 😊";
-                updateDB($session_id, 1, 1);
+                updateDB(1,1);
             }
             else {  //Normale Reaktion
 
                 $fulfillment = "Um eine Rechnung einsehen zu können, benötige ich zunächst Ihre Kundennummer, die Rechnungsnummer, sowie ihr Geburstjahr zur Authentifizierung. Bitte teilen Sie mir zunächst Ihre Kundennummer mit. 😊";
-                updateDB($session_id, 1, 0);
+                updateDB(1,0);
             }
 
             break;
@@ -65,12 +61,12 @@ if($method == 'POST'){
             if (checkSentiment($text) == "negative") { //empathische Reaktion
 
                 $fulfillment = "Verstehe, bitte entschuldigen Sie die Verwirrung. Wenn sie möchten, kann ich Ihnen eine genaue Auflistung der Kosten in diesem Monat nennen.";
-                updateDB($session_id, 2, 1);
+                updateDB(2,1);
             }
             else {//Normale Reaktion
 
                 $fulfillment = "Wenn sie möchten, kann ich Ihnen eine genaue Auflistung der Kosten in diesem Monat nennen.";
-                updateDB($session_id, 2, 0);
+                updateDB(2,0);
             }
             break;
 
@@ -82,19 +78,19 @@ if($method == 'POST'){
 
             if (checkSentiment($text) == "negative") { //empathische Reaktion
                 $fulfillment= "Ok, ich sehe das Problem und kann ihren Ärger gut nachvollziehen. Im System steht, dass das Abonnement am 22.12.2018 abgeschlossen wurde.";
-                updateDB($session_id, 3, 1);
+                updateDB(3,1);
             }
             else {
 
                 $fulfillment = "Im System steht, dass das Abonnement am 22.12.2018 abgeschlossen wurde.";
-                updateDB($session_id, 3, 0);
+                updateDB(3,0);
             }
          break;
 
         case 'test':
 
-            createDB($session_id);
-            $fulfillment = checkSentiment($text);
+
+
             break;
 
 
@@ -112,31 +108,7 @@ if($method == 'POST'){
 
 }
 else {
-   echo "Ergebnis:";
-
-
-
-    $dsn = "pgsql:"
-        . "host=ec2-46-137-99-175.eu-west-1.compute.amazonaws.com;"
-        . "dbname=de702gpabga2b8;"
-        . "user=tyejvoeteqjsrj;"
-        . "port=5432;"
-        . "sslmode=require;"
-        . "password=8190d40158952a0b212121997e2b4dc15d39ebabff5de45d9ddecd59016e15f1";
-
-    $pdo = new PDO($dsn);
-    //Lösung
-    $result = $pdo->prepare("SELECT probanden_id FROM empathie WHERE probanden_id =?");
-    $result->execute(["testdatensatz"]);
-    $user = $result->fetch();
-
-
-    echo $user[0];
-
-
-
-
-    $result->closeCursor();
+   echo "method not allowed!";
 
 
 }
@@ -187,8 +159,10 @@ function createDB ($session_id) {
 
 
 
-function updateDB ($session_id, $KP, $empathic) {
+function updateDB ($KP, $empathic) {
 
+
+    //Schritt 1: Maximale Tracking_id bestimmen, um für neuen Datensatz einen höhere Tracking ID zu erzeugen
     $dsn = "pgsql:"
         . "host=ec2-46-137-99-175.eu-west-1.compute.amazonaws.com;"
         . "dbname=de702gpabga2b8;"
@@ -199,98 +173,23 @@ function updateDB ($session_id, $KP, $empathic) {
 
     $pdo = new PDO($dsn);
 
-    $result = $pdo->prepare("SELECT probanden_id FROM empathie WHERE probanden_id =?");
-    $result->execute([$session_id]);
-    $user = $result->fetch();
 
 
+    $result = $pdo->prepare("SELECT MAX(tracking_id) FROM tracking");
+    $result->execute();
+    $currentMax = $result->fetch();
+
+    //Datum/Zeit bestimmen
+    $date = date("D M d, Y G:i");
+
+    $tracking_id = $currentMax++;
 
     //Schritt 2 Datensatz erstellen/updaten
 
-    if ($session_id == $user[0]) {//DB-Eintrag vorhanden
 
         $pdo2 = new PDO($dsn);
-
-        switch($KP){
-            case "1":
-
-                $result2 = $pdo2->prepare("UPDATE empathie SET kp1 =? WHERE probanden_id=?");
-
-
-                break;
-
-            case "2":
-
-                $result2 = $pdo2->prepare("UPDATE empathie SET kp2 =? WHERE probanden_id=?");
-                break;
-
-
-
-            case "3":
-
-                $result2 = $pdo2->prepare("UPDATE empathie SET kp3 =? WHERE probanden_id=?");
-
-                break;
-
-            default:
-
-                break;
-        }
-
-
-        $result2->execute([$empathic, $session_id]);
-
-
-
-    }
-    else {  //Eintrag nicht vorhanden
-
-        //Neuen Datensatz schreiben
-
-        $pdo3 = new PDO($dsn);
-        $date = date("D M d, Y G:i");
-        $result2 = $pdo3->prepare("INSERT INTO empathie VALUES (?,?,?,?,?)");
-
-
-
-        switch($KP){
-            case "1":
-
-
-                $result2->execute([$session_id, $empathic,0,0,$date]); //Problemzeile
-
-
-
-                break;
-
-            case "2":
-
-
-                $result2->execute([$session_id,0, $empathic,0,$date]);
-                break;
-
-
-            case "3":
-
-
-                $result2->execute([$session_id, 0,0,$empathic,$date]);
-
-                break;
-
-            default:
-
-                break;
-        }
-
-
-
-    }
-
-
-
-
-
-
+        $result2 = $pdo2->prepare("INSERT INTO tracking VALUES (?,?,?,?)");
+        $result2->execute([$tracking_id, $KP, $empathic, $date]);
 
 
 }
